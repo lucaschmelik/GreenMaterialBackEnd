@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GreenMaterialBackEnd", "GreenMaterialBackEnd\GreenMaterialBackEnd.csproj", "{62E7DA1A-EE92-4BBD-BD7F-47D0F4564615}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DB", "DB\DB.csproj", "{C3A476BD-4B6B-40DD-B14F-8484AA890023}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{62E7DA1A-EE92-4BBD-BD7F-47D0F4564615}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62E7DA1A-EE92-4BBD-BD7F-47D0F4564615}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62E7DA1A-EE92-4BBD-BD7F-47D0F4564615}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62E7DA1A-EE92-4BBD-BD7F-47D0F4564615}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3A476BD-4B6B-40DD-B14F-8484AA890023}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3A476BD-4B6B-40DD-B14F-8484AA890023}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3A476BD-4B6B-40DD-B14F-8484AA890023}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3A476BD-4B6B-40DD-B14F-8484AA890023}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {63150DC3-D0F6-4A8D-982B-CBB92DED2E13}
+	EndGlobalSection
+EndGlobal
