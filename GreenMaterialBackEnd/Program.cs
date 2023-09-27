@@ -12,6 +12,15 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<GreenMaterialContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("GreenMaterialConnection")));
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowLocalhost4200",
+        builder => builder
+            .WithOrigins("http://localhost:4200")
+            .AllowAnyHeader()
+            .AllowAnyMethod());
+});
+
 var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
@@ -25,7 +34,10 @@ using (var scope = app.Services.CreateScope())
     {
         app.UseSwagger();
         app.UseSwaggerUI();
+
     }
+
+app.UseCors("AllowLocalhost4200");
 
 app.UseHttpsRedirection();
 
