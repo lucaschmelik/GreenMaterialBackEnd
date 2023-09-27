@@ -24,6 +24,14 @@ namespace DB
             modelBuilder.Entity<Invoice>().ToTable("Invoice");
             modelBuilder.Entity<Item>().ToTable("Item");
             modelBuilder.Entity<Product>().ToTable("Product");
+
+            modelBuilder.Entity<Item>()
+                 .Property(i => i.cantidad)
+                 .HasColumnType("decimal(18, 2)");
+
+            modelBuilder.Entity<Product>()
+                .Property(p => p.price)
+                .HasColumnType("decimal(18, 2)");
         }
 
     }
