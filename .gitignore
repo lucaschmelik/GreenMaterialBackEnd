@@ -3,3 +3,5 @@
 ################################################################################
 
 /.vs
+/GreenMaterialBackEnd/bin/Debug/net6.0/GreenMaterialBackEnd.dll
+/GreenMaterialBackEnd/bin/Debug/net6.0/GreenMaterialBackEnd.pdb
