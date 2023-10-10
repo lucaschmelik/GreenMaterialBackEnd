@@ -13,7 +13,7 @@ namespace DB
         public int invoiceId { get; set; }
 
         [ForeignKey("invoiceId")]
-        public virtual Invoice brand { get; set; }
+        public virtual Invoice invoice { get; set; }
         [ForeignKey("productId")]
         public virtual Product product { get; set; }
     }
