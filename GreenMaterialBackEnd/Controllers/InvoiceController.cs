@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
+using System.Transactions;
 
 namespace GreenMaterialBackEnd.Controllers
 {
@@ -43,52 +44,52 @@ namespace GreenMaterialBackEnd.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> PostInvoice(int userId)
+        public ActionResult PostInvoice(int userId, int productId, int cantidad)
         {
+            using var transactionScope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled);
+
             try
             {
                 var invoice = new Invoice()
                 {
                     userId = userId,
-                    state = (int)State.Created                  
+                    state = (int)State.Created
                 };
 
                 _context.invoices.Add(invoice);
-                await _context.SaveChangesAsync();
-                return Ok(invoice);
+                _context.SaveChanges();
+
+                AddItem(productId, cantidad, invoice.id);
+
+                transactionScope.Complete();
+
+                return Ok();
             }
             catch (Exception e)
             {
+                transactionScope.Dispose();
                 return BadRequest(e.Message);
             }
         }
 
-        [HttpPut]
-        public async Task<ActionResult> CreatedInvoice([FromBody] IList<Item> items)
+        private void AddItem(int productId, int cantidad, int id)
         {
             try
             {
-                if (!items.Any())
+                var item = new Item()
                 {
-                    throw new Exception("No hay items");
-                }
+                    cantidad = cantidad,
+                    productId = productId,
+                    invoiceId = id
+                };
 
-                var invoiceFound = await _context.invoices.FirstOrDefaultAsync(x=>x.id == items.First().invoiceId);
+                _context.items.Add(item);
 
-                if (invoiceFound == null)
-                {
-                    throw new Exception("Factura no encontrada");
-                }
-
-                items.ToList().ForEach(x => _context.items.Add(x));
-
-                await _context.SaveChangesAsync();
-
-                return Ok(items);
+                _context.SaveChanges();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                return BadRequest(e.Message);
+                throw;
             }
         }
     }

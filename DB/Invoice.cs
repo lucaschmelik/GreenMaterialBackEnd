@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System.Collections.ObjectModel;
+using System.Text.Json.Serialization;
 
 namespace DB
 {
@@ -13,8 +14,9 @@ namespace DB
         public int state { get; set; }
 
         [ForeignKey("userId")]
-        public virtual User user { get; set; } 
-
+        [JsonIgnore]
+        public virtual User user { get; set; }
+        [JsonIgnore]
         public virtual Collection<Item> items { get; set; }
     }
 }

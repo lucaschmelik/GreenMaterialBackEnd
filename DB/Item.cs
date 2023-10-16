@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace DB
 {
@@ -13,8 +14,10 @@ namespace DB
         public int invoiceId { get; set; }
 
         [ForeignKey("invoiceId")]
+        [JsonIgnore]
         public virtual Invoice invoice { get; set; }
         [ForeignKey("productId")]
+        [JsonIgnore]
         public virtual Product product { get; set; }
     }
 }

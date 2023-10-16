@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace DB
 {
@@ -15,6 +16,7 @@ namespace DB
         public string color { get;set; }
         public int stock { get;set; }
 
+        [JsonIgnore]
         public ICollection<Item> items { get; set; }
     }
 }
