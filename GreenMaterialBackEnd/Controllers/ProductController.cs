@@ -45,8 +45,9 @@ namespace GreenMaterialBackEnd.Controllers
                         producto => producto.id,
                         (item, producto) => new
                         {
-                            Producto = producto,
-                            Cantidad = item.cantidad
+                            product = producto,
+                            amount = item.cantidad,
+                            itemId = item.id
                         }
                     )
                     .ToList();
@@ -56,6 +57,27 @@ namespace GreenMaterialBackEnd.Controllers
                     lastInvoiceId = lastInvoice.id,
                     products = cartProducts
                 }));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpDelete("DeleteItem")]
+        public ActionResult DeleteItem(int itemId)
+        {
+            try
+            {
+                var item = _context.items.FirstOrDefault(item => item.id == itemId);
+
+                if (item == null) return BadRequest("No se encontró el item a eliminar.");
+
+                _context.items.Remove(item);
+
+                _context.SaveChanges();
+
+                return Ok();
             }
             catch (Exception e)
             {
