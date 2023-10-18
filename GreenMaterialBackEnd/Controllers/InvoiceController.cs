@@ -45,11 +45,11 @@ namespace GreenMaterialBackEnd.Controllers
             {
                 var currentCreateInvoice = _context.invoices.FirstOrDefault(
                     x => x.isCurrent &&
-                    x.userId == userId &&
+                    x.userId == userId && (
                     x.state == (int)State.Created ||
                     x.state == (int)State.Confirmed ||
                     x.state == (int)State.NotPayed
-                    );
+                    ));
 
                 if (currentCreateInvoice != null)
                 {
