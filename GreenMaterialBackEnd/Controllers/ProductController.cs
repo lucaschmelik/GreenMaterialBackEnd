@@ -35,7 +35,10 @@ namespace GreenMaterialBackEnd.Controllers
                     .OrderByDescending(x => x.id)
                     .FirstOrDefault();
 
-                if (lastInvoice == null) { throw new Exception("El usuario no tiene facturas generadas"); }
+                if (lastInvoice == null)
+                {
+                    return Ok();
+                }
 
                 var cartProducts = _context.items
                     .Where(x => x.invoiceId == lastInvoice.id)
@@ -73,7 +76,14 @@ namespace GreenMaterialBackEnd.Controllers
 
                 if (item == null) return BadRequest("No se encontró el item a eliminar.");
 
+                var invoice = _context.invoices.FirstOrDefault(x => x.id == item.invoiceId);
+
                 _context.items.Remove(item);
+
+                if (invoice != null && _context.items.Count(x=>x.invoiceId == invoice.id) == 1)
+                {
+                    _context.invoices.Remove(invoice);
+                }
 
                 _context.SaveChanges();
 

@@ -10,4 +10,12 @@
         Finished = 5,
         Canceled = 6
     }
+
+    public static class StateExtensions
+    {
+        public static bool IsInProcess(int state)
+        {
+            return state is (int)State.Created or (int)State.Confirmed or (int)State.NotPayed;
+        }
+    }
 }

@@ -43,16 +43,24 @@ namespace GreenMaterialBackEnd.Controllers
         {
             try
             {
-                var lastInvoice = GetLastInvoice(userId, State.Created);
-                if (lastInvoice != null)
+                var currentCreateInvoice = _context.invoices.FirstOrDefault(
+                    x => x.isCurrent &&
+                    x.userId == userId &&
+                    x.state == (int)State.Created ||
+                    x.state == (int)State.Confirmed ||
+                    x.state == (int)State.NotPayed
+                    );
+
+                if (currentCreateInvoice != null)
                 {
-                    return Ok(lastInvoice.id);
+                    return Ok(currentCreateInvoice.id);
                 }
 
                 var invoice = new Invoice()
                 {
                     userId = userId,
-                    state = (int)State.Created
+                    state = (int)State.Created,
+                    isCurrent = true
                 };
 
                 _context.invoices.Add(invoice);
@@ -100,11 +108,13 @@ namespace GreenMaterialBackEnd.Controllers
         }
 
         [HttpPut("ChangeState")]
-        public ActionResult ChangeState(int userId, int currentState, int nextState)
+        public ActionResult ChangeState(int userId, int nextState)
         {
             try
             {
-                var lastInvoice = GetLastInvoice(userId, (State)Enum.ToObject(typeof(State), currentState));
+                var lastInvoice = _context.invoices.FirstOrDefault(
+                    x => x.isCurrent &&
+                    x.userId == userId);
 
                 if (lastInvoice == null)
                 {
@@ -128,7 +138,10 @@ namespace GreenMaterialBackEnd.Controllers
         {
             try
             {
-                var lastInvoice = GetLastInvoice(userId, (State)Enum.ToObject(typeof(State), state));
+                var lastInvoice = _context.invoices.FirstOrDefault(
+                    x => x.isCurrent &&
+                    x.userId == userId &&
+                    x.state == state);
 
                 if (lastInvoice == null)
                 {
@@ -154,18 +167,16 @@ namespace GreenMaterialBackEnd.Controllers
         }
 
         [HttpGet("HasInvoiceByStateAndUser")]
-        public ActionResult<bool> HasInvoiceByStateAndUser(int userId, int state)
+        public ActionResult<bool> HasInvoiceByStateAndUser(int userId)
         {
             try
             {
-                var lastInvoice = GetLastInvoice(userId, (State)Enum.ToObject(typeof(State), state));
+                var lastInvoice = _context.invoices.FirstOrDefault(
+                    x => x.isCurrent && 
+                         x.userId == userId &&
+                         x.state == (int)State.Confirmed);
 
-                if (lastInvoice == null)
-                {
-                    return BadRequest();
-                }
-
-                return Ok(true);
+                return Ok(lastInvoice != null);
             }
             catch (Exception e)
             {
