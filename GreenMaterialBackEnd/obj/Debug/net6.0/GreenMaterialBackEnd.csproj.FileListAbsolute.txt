@@ -1,5 +1,4 @@
 C:\PROYECTOS\GreenMaterial\GreenMaterialBackEnd\GreenMaterialBackEnd\bin\Debug\net6.0\appsettings.Development.json
-C:\PROYECTOS\GreenMaterial\GreenMaterialBackEnd\GreenMaterialBackEnd\bin\Debug\net6.0\appsettings.json
 C:\PROYECTOS\GreenMaterial\GreenMaterialBackEnd\GreenMaterialBackEnd\bin\Debug\net6.0\GreenMaterialBackEnd.exe
 C:\PROYECTOS\GreenMaterial\GreenMaterialBackEnd\GreenMaterialBackEnd\bin\Debug\net6.0\GreenMaterialBackEnd.deps.json
 C:\PROYECTOS\GreenMaterial\GreenMaterialBackEnd\GreenMaterialBackEnd\bin\Debug\net6.0\GreenMaterialBackEnd.runtimeconfig.json

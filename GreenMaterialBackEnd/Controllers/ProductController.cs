@@ -31,7 +31,9 @@ namespace GreenMaterialBackEnd.Controllers
             try
             {
                 var lastInvoice = _context.invoices
-                    .Where(x => x.userId == userId && x.state == (int)State.Created)
+                    .Where(x => x.userId == userId &&
+                        x.state == (int)State.Created &&
+                        x.isCurrent)
                     .OrderByDescending(x => x.id)
                     .FirstOrDefault();
 

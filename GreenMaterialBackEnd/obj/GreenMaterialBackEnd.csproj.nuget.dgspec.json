@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\lschmelik\\Desktop\\LUCAS\\Green Material\\GreenMaterialBackEnd\\GreenMaterialBackEnd\\GreenMaterialBackEnd.csproj": {}
+    "C:\\PROYECTOS\\GreenMaterial\\GreenMaterialBackEnd\\GreenMaterialBackEnd\\GreenMaterialBackEnd.csproj": {}
   },
   "projects": {
-    "C:\\Users\\lschmelik\\Desktop\\LUCAS\\Green Material\\GreenMaterialBackEnd\\DB\\DB.csproj": {
+    "C:\\PROYECTOS\\GreenMaterial\\GreenMaterialBackEnd\\DB\\DB.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lschmelik\\Desktop\\LUCAS\\Green Material\\GreenMaterialBackEnd\\DB\\DB.csproj",
+        "projectUniqueName": "C:\\PROYECTOS\\GreenMaterial\\GreenMaterialBackEnd\\DB\\DB.csproj",
         "projectName": "DB",
-        "projectPath": "C:\\Users\\lschmelik\\Desktop\\LUCAS\\Green Material\\GreenMaterialBackEnd\\DB\\DB.csproj",
-        "packagesPath": "C:\\Users\\lschmelik\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lschmelik\\Desktop\\LUCAS\\Green Material\\GreenMaterialBackEnd\\DB\\obj\\",
+        "projectPath": "C:\\PROYECTOS\\GreenMaterial\\GreenMaterialBackEnd\\DB\\DB.csproj",
+        "packagesPath": "C:\\Users\\lucas\\.nuget\\packages\\",
+        "outputPath": "C:\\PROYECTOS\\GreenMaterial\\GreenMaterialBackEnd\\DB\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\lschmelik\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\lucas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -75,21 +80,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\lschmelik\\Desktop\\LUCAS\\Green Material\\GreenMaterialBackEnd\\GreenMaterialBackEnd\\GreenMaterialBackEnd.csproj": {
+    "C:\\PROYECTOS\\GreenMaterial\\GreenMaterialBackEnd\\GreenMaterialBackEnd\\GreenMaterialBackEnd.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lschmelik\\Desktop\\LUCAS\\Green Material\\GreenMaterialBackEnd\\GreenMaterialBackEnd\\GreenMaterialBackEnd.csproj",
+        "projectUniqueName": "C:\\PROYECTOS\\GreenMaterial\\GreenMaterialBackEnd\\GreenMaterialBackEnd\\GreenMaterialBackEnd.csproj",
         "projectName": "GreenMaterialBackEnd",
-        "projectPath": "C:\\Users\\lschmelik\\Desktop\\LUCAS\\Green Material\\GreenMaterialBackEnd\\GreenMaterialBackEnd\\GreenMaterialBackEnd.csproj",
-        "packagesPath": "C:\\Users\\lschmelik\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lschmelik\\Desktop\\LUCAS\\Green Material\\GreenMaterialBackEnd\\GreenMaterialBackEnd\\obj\\",
+        "projectPath": "C:\\PROYECTOS\\GreenMaterial\\GreenMaterialBackEnd\\GreenMaterialBackEnd\\GreenMaterialBackEnd.csproj",
+        "packagesPath": "C:\\Users\\lucas\\.nuget\\packages\\",
+        "outputPath": "C:\\PROYECTOS\\GreenMaterial\\GreenMaterialBackEnd\\GreenMaterialBackEnd\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\lschmelik\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\lucas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -97,14 +106,16 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "C:\\Program Files\\dotnet\\sdk\\7.0.306\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\lschmelik\\Desktop\\LUCAS\\Green Material\\GreenMaterialBackEnd\\DB\\DB.csproj": {
-                "projectPath": "C:\\Users\\lschmelik\\Desktop\\LUCAS\\Green Material\\GreenMaterialBackEnd\\DB\\DB.csproj"
+              "C:\\PROYECTOS\\GreenMaterial\\GreenMaterialBackEnd\\DB\\DB.csproj": {
+                "projectPath": "C:\\PROYECTOS\\GreenMaterial\\GreenMaterialBackEnd\\DB\\DB.csproj"
               }
             }
           }
@@ -153,7 +164,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
         }
       }
     }
