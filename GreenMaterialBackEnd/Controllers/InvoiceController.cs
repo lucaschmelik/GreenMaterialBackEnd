@@ -46,9 +46,9 @@ namespace GreenMaterialBackEnd.Controllers
                 var currentCreateInvoice = _context.invoices.FirstOrDefault(
                     x => x.isCurrent &&
                     x.userId == userId && (
-                    x.state == (int)State.Created ||
-                    x.state == (int)State.Confirmed ||
-                    x.state == (int)State.NotPayed
+                    x.state == (int)StateEnum.Created ||
+                    x.state == (int)StateEnum.Confirmed ||
+                    x.state == (int)StateEnum.NotPayed
                     ));
 
                 if (currentCreateInvoice != null)
@@ -59,7 +59,7 @@ namespace GreenMaterialBackEnd.Controllers
                 var invoice = new Invoice()
                 {
                     userId = userId,
-                    state = (int)State.Created,
+                    state = (int)StateEnum.Created,
                     isCurrent = true
                 };
 
@@ -73,14 +73,6 @@ namespace GreenMaterialBackEnd.Controllers
             {
                 return BadRequest(e.Message);
             }
-        }
-
-        private Invoice? GetLastInvoice(int userId, State state)
-        {
-            return _context.invoices
-                    .Where(x => x.userId == userId && x.state == (int)state)
-                    .OrderByDescending(x => x.id)
-                    .FirstOrDefault();
         }
 
         [HttpPost("AddItem")]
@@ -145,7 +137,7 @@ namespace GreenMaterialBackEnd.Controllers
 
                 if (lastInvoice == null)
                 {
-                    return BadRequest();
+                    return NotFound();
                 }
 
                 var totalSum = _context.items
@@ -167,16 +159,22 @@ namespace GreenMaterialBackEnd.Controllers
         }
 
         [HttpGet("HasInvoiceByStateAndUser")]
-        public ActionResult<bool> HasInvoiceByStateAndUser(int userId)
+        public ActionResult<int> HasInvoiceByStateAndUser(int userId)
         {
             try
             {
                 var lastInvoice = _context.invoices.FirstOrDefault(
-                    x => x.isCurrent && 
-                         x.userId == userId &&
-                         x.state == (int)State.Confirmed);
+                    x => x.isCurrent &&
+                         x.userId == userId && (
+                         x.state == (int)StateEnum.Confirmed ||
+                         x.state == (int)StateEnum.NotPayed));
 
-                return Ok(lastInvoice != null);
+                if (lastInvoice == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(lastInvoice.state);
             }
             catch (Exception e)
             {

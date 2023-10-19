@@ -1,6 +1,6 @@
 ﻿namespace GreenMaterialBackEnd.Enumerables
 {
-    public enum State
+    public enum StateEnum
     {
         None = 0,
         Created = 1,
@@ -15,7 +15,7 @@
     {
         public static bool IsInProcess(int state)
         {
-            return state is (int)State.Created or (int)State.Confirmed or (int)State.NotPayed;
+            return state is (int)StateEnum.Created or (int)StateEnum.Confirmed or (int)StateEnum.NotPayed;
         }
     }
 }
