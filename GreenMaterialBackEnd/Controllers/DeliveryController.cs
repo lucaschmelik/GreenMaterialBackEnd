@@ -41,7 +41,8 @@ namespace GreenMaterialBackEnd.Controllers
                     name = delivery.name,
                     adress = delivery.adress,
                     phoneNumber = delivery.phoneNumber,
-                    notes = delivery.notes
+                    notes = delivery.notes,
+                    price = delivery.price
                 };
 
                 if (delivery.deliveryTypeId != 1 &&
@@ -65,5 +66,6 @@ namespace GreenMaterialBackEnd.Controllers
                 return BadRequest(e.Message);
             }
         }
+
     }
 }

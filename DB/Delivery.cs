@@ -14,6 +14,7 @@ namespace DB
         public string adress { get; set; }
         public string phoneNumber { get; set; }
         public string notes { get; set; }
+        public decimal price { get; set; }
 
     }
 }
