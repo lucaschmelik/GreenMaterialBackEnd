@@ -1,0 +1,62 @@
+{
+  "dependencies": {
+    "compute.appService1": {
+      "restored": true,
+      "restoreTime": "2023-10-24T03:18:14.5839732Z"
+    },
+    "apis1": {
+      "restored": true,
+      "restoreTime": "2023-10-24T03:17:47.0612828Z"
+    },
+    "mssql1": {
+      "restored": false,
+      "restoreTime": "2023-10-24T03:20:22.4637729Z"
+    },
+    "secrets1": {
+      "restored": true,
+      "restoreTime": "2023-10-24T03:19:37.4898386Z"
+    }
+  },
+  "parameters": {
+    "mssql1.subscriptionId": {
+      "Name": "mssql1.subscriptionId",
+      "Type": "subscription",
+      "Value": "71488efd-e5b2-41ee-8f62-f2f70034fe76"
+    },
+    "compute.appService1.subscriptionId": {
+      "Name": "compute.appService1.subscriptionId",
+      "Type": "subscription",
+      "Value": "71488efd-e5b2-41ee-8f62-f2f70034fe76"
+    },
+    "mssql1.resourceGroupLocation": {
+      "Name": "mssql1.resourceGroupLocation",
+      "Type": "location",
+      "Value": "eastus"
+    },
+    "subscriptionId": {
+      "Name": "subscriptionId",
+      "Type": "subscription",
+      "Value": "71488efd-e5b2-41ee-8f62-f2f70034fe76"
+    },
+    "mssql1.resourceGroupName": {
+      "Name": "mssql1.resourceGroupName",
+      "Type": "resourceGroup",
+      "Value": "greenMaterial"
+    },
+    "compute.appService1.resourceGroupName": {
+      "Name": "compute.appService1.resourceGroupName",
+      "Type": "resourceGroup",
+      "Value": "greenMaterial"
+    },
+    "compute.appService1.resourceGroupLocation": {
+      "Name": "compute.appService1.resourceGroupLocation",
+      "Type": null,
+      "Value": "eastus"
+    },
+    "compute.appService1.resourceName": {
+      "Name": "compute.appService1.resourceName",
+      "Type": null,
+      "Value": "GreenMaterialApi"
+    }
+  }
+}

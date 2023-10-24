@@ -45,9 +45,9 @@ namespace GreenMaterialBackEnd.Controllers
                     price = delivery.price
                 };
 
-                if (delivery.deliveryTypeId != 1 &&
-                    delivery.deliveryTypeId != 2 ||
-                    (delivery.deliveryTypeId == 1 && (
+                if (delivery.deliveryTypeId != (int)DeliveryTypeEnum.Envío &&
+                    delivery.deliveryTypeId != (int)DeliveryTypeEnum.Retiro ||
+                    (delivery.deliveryTypeId == (int)DeliveryTypeEnum.Envío && (
                     delivery.name == string.Empty ||
                     delivery.adress == string.Empty ||
                     delivery.phoneNumber == string.Empty)))

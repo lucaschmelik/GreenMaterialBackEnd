@@ -1,0 +1,22 @@
+{
+  "dependencies": {
+    "compute.appService1": {
+      "group": "connections",
+      "type": "compute.appService"
+    },
+    "secrets1": {
+      "type": "secrets"
+    },
+    "apis1": {
+      "type": "apis"
+    },
+    "apis2": {
+      "type": "apis"
+    },
+    "mssql1": {
+      "type": "mssql",
+      "connectionId": "tcp:greenmaterial.database.windows.net,1433",
+      "dynamicId": null
+    }
+  }
+}

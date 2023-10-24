@@ -16,6 +16,7 @@ namespace DB
         public DbSet<Item> items { get; set; }
         public DbSet<Product> products { get; set; }
         public DbSet<Delivery> deliveries { get; set; }
+        public DbSet<Payment> payments { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -26,6 +27,7 @@ namespace DB
             modelBuilder.Entity<Item>().ToTable("Item");
             modelBuilder.Entity<Product>().ToTable("Product");
             modelBuilder.Entity<Delivery>().ToTable("Delivery");
+            modelBuilder.Entity<Payment>().ToTable("Payment");
 
             modelBuilder.Entity<Item>()
                  .Property(i => i.cantidad)

@@ -109,6 +109,41 @@ namespace DB.Migrations
                     b.ToTable("Item", (string)null);
                 });
 
+            modelBuilder.Entity("DB.Payment", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
+
+                    b.Property<string>("cvc")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("invoiceId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("mmyy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("number")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("paymentType")
+                        .HasColumnType("int");
+
+                    b.HasKey("id");
+
+                    b.ToTable("Payment", (string)null);
+                });
+
             modelBuilder.Entity("DB.Product", b =>
                 {
                     b.Property<int>("id")
