@@ -136,6 +136,30 @@ namespace GreenMaterialBackEnd.Controllers
             }
         }
 
+        [HttpPut("ChangeStateByInvoiceId")]
+        public ActionResult ChangeStateByInvoiceId(int invoiceId, int nextState)
+        {
+            try
+            {
+                var invoice = _context.invoices.FirstOrDefault(x => x.id == invoiceId);
+
+                if (invoice == null)
+                {
+                    return Ok();
+                }
+
+                invoice.state = nextState;
+
+                _context.SaveChanges();
+
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
         private decimal GetTotalAmountByInvoiceId(int invoiceId)
         {
             try
