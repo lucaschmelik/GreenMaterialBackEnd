@@ -1,0 +1,34 @@
+{
+  "dependencies": {
+    "apis2": {
+      "restored": true,
+      "restoreTime": "2023-10-24T03:46:18.689363Z"
+    },
+    "mssql1": {
+      "restored": true,
+      "restoreTime": "2023-10-24T03:55:45.3215567Z"
+    }
+  },
+  "parameters": {
+    "mssql1.subscriptionId": {
+      "Name": "mssql1.subscriptionId",
+      "Type": "subscription",
+      "Value": "71488efd-e5b2-41ee-8f62-f2f70034fe76"
+    },
+    "mssql1.resourceGroupName": {
+      "Name": "mssql1.resourceGroupName",
+      "Type": "resourceGroup",
+      "Value": "greenMaterial"
+    },
+    "apis2.subscriptionId": {
+      "Name": "apis2.subscriptionId",
+      "Type": "subscription",
+      "Value": "71488efd-e5b2-41ee-8f62-f2f70034fe76"
+    },
+    "apis2.resourceGroupName": {
+      "Name": "apis2.resourceGroupName",
+      "Type": "resourceGroup",
+      "Value": "greenMaterial"
+    }
+  }
+}

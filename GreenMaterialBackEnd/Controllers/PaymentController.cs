@@ -22,7 +22,7 @@ namespace GreenMaterialBackEnd.Controllers
                 var lastInvoice = _context.invoices.FirstOrDefault(
                     x => x.isCurrent &&
                     x.userId == userId &&
-                    x.state == (int)StateEnum.NotPayed);
+                    x.state == (int)StateEnum.Pago);
 
                 if (lastInvoice == null)
                 {
@@ -71,14 +71,15 @@ namespace GreenMaterialBackEnd.Controllers
                 var currentInvoice = _context.invoices.FirstOrDefault(
                     x => x.isCurrent &&
                     x.userId == userId &&
-                    x.state == (int)StateEnum.NotPayed);
+                    x.state == (int)StateEnum.Pago);
 
                 if (currentInvoice == null)
                 {
                     return BadRequest("El usuario no tiene una factura en curso");
                 }
 
-                currentInvoice.state = (int)StateEnum.Payed;
+                currentInvoice.state = (int)StateEnum.Pagado;
+                currentInvoice.isCurrent = false;
 
                 var newPayment = new Payment()
                 {

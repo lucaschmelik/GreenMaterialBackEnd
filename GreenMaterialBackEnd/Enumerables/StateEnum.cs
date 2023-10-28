@@ -2,12 +2,12 @@
 {
     public enum StateEnum
     {
-        None = 0,
-        Created = 1,
-        Confirmed = 2,
-        NotPayed = 3,
-        Payed = 4,
-        Finished = 5,
-        Canceled = 6
+        Inexistente = 0,
+        Carrito = 1,
+        Envio = 2,
+        Pago = 3,
+        Pagado = 4,
+        Entregado = 5,
+        Eliminado = 6
     }
 }

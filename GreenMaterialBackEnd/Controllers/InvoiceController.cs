@@ -30,7 +30,18 @@ namespace GreenMaterialBackEnd.Controllers
         {
             try
             {
-                return Ok(_context.invoices.Where(x => x.user.id == userId).ToList());
+                var list = _context.invoices
+                    .Where(x => x.user.id == userId)
+                    .AsEnumerable()
+                    .Select(x => new
+                    {
+                        x.id,
+                        Estado = Enum.GetName(typeof(StateEnum), x.state),
+                        EsActual = x.isCurrent ? "Si" : "No",
+                        Total = GetTotalAmountByInvoiceId(x.id)
+                    }).ToList();
+
+                return Ok(list);
             }
             catch (Exception e)
             {
@@ -46,9 +57,9 @@ namespace GreenMaterialBackEnd.Controllers
                 var currentCreateInvoice = _context.invoices.FirstOrDefault(
                     x => x.isCurrent &&
                     x.userId == userId && (
-                    x.state == (int)StateEnum.Created ||
-                    x.state == (int)StateEnum.Confirmed ||
-                    x.state == (int)StateEnum.NotPayed
+                    x.state == (int)StateEnum.Carrito ||
+                    x.state == (int)StateEnum.Envio ||
+                    x.state == (int)StateEnum.Pago
                     ));
 
                 if (currentCreateInvoice != null)
@@ -59,7 +70,7 @@ namespace GreenMaterialBackEnd.Controllers
                 var invoice = new Invoice()
                 {
                     userId = userId,
-                    state = (int)StateEnum.Created,
+                    state = (int)StateEnum.Carrito,
                     isCurrent = true
                 };
 
@@ -125,23 +136,15 @@ namespace GreenMaterialBackEnd.Controllers
             }
         }
 
-        [HttpGet("GetTotalAmountByStateAndUser")]
-        public ActionResult<decimal> GetTotalAmountByStateAndUser(int userId, int state)
+        private decimal GetTotalAmountByInvoiceId(int invoiceId)
         {
             try
             {
-                var lastInvoice = _context.invoices.FirstOrDefault(
-                    x => x.isCurrent &&
-                    x.userId == userId &&
-                    x.state == state);
-
-                if (lastInvoice == null)
-                {
-                    return NotFound();
-                }
+                var invoice = _context.invoices.FirstOrDefault(
+                    x => x.id == invoiceId) ?? throw new Exception("El usuario no tiene pedidos");
 
                 var totalSum = _context.items
-                    .Where(x => x.invoiceId == lastInvoice.id)
+                    .Where(x => x.invoiceId == invoice.id)
                     .Join(_context.products, item => item.productId, product => product.id, (item, product) => new
                     {
                         item.productId,
@@ -149,6 +152,25 @@ namespace GreenMaterialBackEnd.Controllers
                         precio = product.price
                     })
                     .Sum(item => item.cantidad * item.precio);
+
+                return totalSum;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
+        [HttpGet("GetTotalAmountByUserId")]
+        public ActionResult<decimal> GetTotalAmountByUserId(int userId)
+        {
+            try
+            {
+                var invoice = _context.invoices.FirstOrDefault(
+                    x => x.userId == userId && 
+                    x.isCurrent) ?? throw new Exception("El usuario no tiene pedido en curso");
+
+                var totalSum = GetTotalAmountByInvoiceId(invoice.id);
 
                 return Ok(totalSum);
             }
@@ -166,15 +188,10 @@ namespace GreenMaterialBackEnd.Controllers
                 var lastInvoice = _context.invoices.FirstOrDefault(
                     x => x.isCurrent &&
                          x.userId == userId && (
-                         x.state == (int)StateEnum.Confirmed ||
-                         x.state == (int)StateEnum.NotPayed));
+                         x.state == (int)StateEnum.Envio ||
+                         x.state == (int)StateEnum.Pago));
 
-                if (lastInvoice == null)
-                {
-                    return NotFound();
-                }
-
-                return Ok(lastInvoice.state);
+                return lastInvoice == null ? Ok((int)StateEnum.Inexistente) : Ok(lastInvoice.state);
             }
             catch (Exception e)
             {
@@ -182,5 +199,28 @@ namespace GreenMaterialBackEnd.Controllers
             }
         }
 
+        [HttpDelete()]
+        public ActionResult DeleteItem(int invoiceId)
+        {
+            try
+            {
+                var invoice = _context.invoices.FirstOrDefault(x => x.id == invoiceId);
+
+                invoice.state = (int)StateEnum.Eliminado;
+
+                if (invoice.isCurrent)
+                {
+                    invoice.isCurrent = false;
+                }
+
+                _context.SaveChanges();
+
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
     }
 }

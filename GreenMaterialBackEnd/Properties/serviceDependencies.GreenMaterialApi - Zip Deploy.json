@@ -3,6 +3,14 @@
     "apis1": {
       "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.ApiManagement/service/GreenMaterialBackEndapi/apis/GreenMaterialBackEnd",
       "type": "apis.azure"
+    },
+    "mssql1": {
+      "serviceConnectorResourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Web/sites/GreenMaterialApi/providers/Microsoft.ServiceLinker/linkers/tcpgreenmaterial.database.windows.net143_F204B0C929",
+      "secretStore": "AzureAppSettings",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/greenmaterial/databases/greenMaterial",
+      "type": "mssql.azure",
+      "connectionId": "tcp:greenmaterial.database.windows.net,1433",
+      "dynamicId": null
     }
   }
 }

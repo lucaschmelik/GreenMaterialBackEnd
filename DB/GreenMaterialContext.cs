@@ -36,6 +36,10 @@ namespace DB
             modelBuilder.Entity<Product>()
                 .Property(p => p.price)
                 .HasColumnType("decimal(18, 2)");
+
+            modelBuilder.Entity<Delivery>()
+                .Property(p => p.price)
+                .HasColumnType("decimal(18, 2)");
         }
 
     }

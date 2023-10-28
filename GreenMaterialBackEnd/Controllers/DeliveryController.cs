@@ -25,14 +25,14 @@ namespace GreenMaterialBackEnd.Controllers
                 var currentInvoice = _context.invoices.FirstOrDefault(
                     x => x.isCurrent &&
                     x.userId == userId &&
-                    x.state == (int)StateEnum.Confirmed);
+                    x.state == (int)StateEnum.Envio);
 
                 if (currentInvoice == null)
                 {
                     return BadRequest("El usuario no tiene una factura en curso");
                 }
 
-                currentInvoice.state = (int)StateEnum.NotPayed;
+                currentInvoice.state = (int)StateEnum.Pago;
 
                 var newDelivery = new Delivery()
                 {
