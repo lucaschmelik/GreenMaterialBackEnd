@@ -74,3 +74,4 @@ C:\PROYECTOS\GreenMaterial\GreenMaterialBackEnd\GreenMaterialBackEnd\obj\Debug\n
 C:\PROYECTOS\GreenMaterial\GreenMaterialBackEnd\GreenMaterialBackEnd\obj\Debug\net7.0\GreenMaterialBackEnd.pdb
 C:\PROYECTOS\GreenMaterial\GreenMaterialBackEnd\GreenMaterialBackEnd\obj\Debug\net7.0\GreenMaterialBackEnd.genruntimeconfig.cache
 C:\PROYECTOS\GreenMaterial\GreenMaterialBackEnd\GreenMaterialBackEnd\obj\Debug\net7.0\ref\GreenMaterialBackEnd.dll
+C:\PROYECTOS\GreenMaterial\GreenMaterialBackEnd\GreenMaterialBackEnd\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

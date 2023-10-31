@@ -1,6 +1,9 @@
 ﻿using DB;
 using GreenMaterialBackEnd.Enumerables;
+using GreenMaterialBackEnd.Security;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace GreenMaterialBackEnd.Controllers
 {
@@ -17,6 +20,8 @@ namespace GreenMaterialBackEnd.Controllers
         {
             try
             {
+                var identity = HttpContext.User.Identity as ClaimsIdentity;
+
                 return Ok(_context.products.ToList());
             }
             catch (Exception e)

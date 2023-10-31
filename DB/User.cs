@@ -13,9 +13,6 @@ namespace DB
         public string firstName { get; set; }
         public string email { get; set; }
         public string password { get; set; }
-
-        [JsonIgnore]
-        public virtual ICollection<Invoice> invoices { get; set; }
-
+        public string Rol { get; set; }
     }
 }
